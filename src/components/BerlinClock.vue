@@ -27,12 +27,35 @@ export default {
       return seconds % 2 === 0 ? 'Y' : 'O'
     },
     /**
+     * Indicate which lamp in the Five Hours Row must be on or off
+     * @param time a momentJS date
+     */
+    fiveHoursRow (time) {
+      let row = ['O', 'O', 'O', 'O']
+      let hoursCpt = this.round5(time.hours()) / 5
+      for (let i = 0; i < hoursCpt; i++) {
+        row[i] = 'R'
+      }
+      return row
+    },
+    /**
+     * Indicate which lamp in the Single Hours Row must be on or off
+     * @param time a momentJS date
+     */
+    singleHoursRow (time) {
+      let row = ['O', 'O', 'O', 'O']
+      let hoursCpt = time.hours() % 5
+      for (let i = 0; i < hoursCpt; i++) {
+        row[i] = 'R'
+      }
+      return row
+    },
+    /**
      * Indicate which lamp in the Five Minutes Row must be on or off
      * @param time a momentJS date
      */
     fiveMinutesRow (time) {
       let row = ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O']
-      // We retrieve  and we divide it by 5
       let lampCpt = this.round5(time.minutes()) / 5
       for (let i = 1; i <= lampCpt; i++) {
         row[i - 1] = i % 3 === 0 ? 'R' : 'Y'

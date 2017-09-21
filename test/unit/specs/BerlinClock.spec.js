@@ -54,6 +54,40 @@ describe('BerlinClock.vue', () => {
     })
   })
 
+  // the Single Hours Row test case
+  it('should indicate which lamp in the Single Hours Row must be on or off', () => {
+    var inputs = [
+      { time: '00:00:00', expected: ['O', 'O', 'O', 'O'] },
+      { time: '23:59:59', expected: ['R', 'R', 'R', 'O'] },
+      { time: '02:04:00', expected: ['R', 'R', 'O', 'O'] },
+      { time: '08:23:00', expected: ['R', 'R', 'R', 'O'] },
+      { time: '14:35:00', expected: ['R', 'R', 'R', 'R'] }
+    ]
+
+    inputs.forEach((input) => {
+      let actual = BerlinClock.methods.singleHoursRow(moment(input.time, BerlinClock.dateformat))
+      expect(input.expected)
+        .to.eql(actual)
+    })
+  })
+
+  // the Five Hours Row test case
+  it('should indicate which lamp in the Five Hours Row must be on or off', () => {
+    var inputs = [
+      { time: '00:00:00', expected: ['O', 'O', 'O', 'O'] },
+      { time: '23:59:59', expected: ['R', 'R', 'R', 'R'] },
+      { time: '02:04:00', expected: ['O', 'O', 'O', 'O'] },
+      { time: '08:23:00', expected: ['R', 'O', 'O', 'O'] },
+      { time: '16:35:00', expected: ['R', 'R', 'R', 'O'] }
+    ]
+
+    inputs.forEach((input) => {
+      let actual = BerlinClock.methods.fiveHoursRow(moment(input.time, BerlinClock.dateformat))
+      expect(input.expected)
+        .to.eql(actual)
+    })
+  })
+
   /*
    * Non-fonctionnal test cases
    */
