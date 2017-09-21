@@ -92,6 +92,23 @@ describe('BerlinClock.vue', () => {
    * Non-fonctionnal test cases
    */
 
+  // formatHoursRow() test case
+  it('should return an array of string filled with N \'R\'', () => {
+    var inputs = [
+      { number: 0, expected: ['O', 'O', 'O', 'O'] },
+      { number: 1, expected: ['R', 'O', 'O', 'O'] },
+      { number: 2, expected: ['R', 'R', 'O', 'O'] },
+      { number: 3, expected: ['R', 'R', 'R', 'O'] },
+      { number: 4, expected: ['R', 'R', 'R', 'R'] }
+    ]
+
+    inputs.forEach((input) => {
+      let actual = BerlinClock.methods.formatHoursRow(input.number)
+      expect(input.expected)
+        .to.eql(actual)
+    })
+  })
+
   // round5() test case
   it('should return the last inferior multiple of 5', () => {
     var inputs = [

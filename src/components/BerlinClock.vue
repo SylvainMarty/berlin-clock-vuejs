@@ -23,29 +23,29 @@ export default {
      * @param time a momentJS date
      */
     secondsLamp (time) {
-      let seconds = time.seconds()
-      return seconds % 2 === 0 ? 'Y' : 'O'
+      return time.seconds() % 2 === 0 ? 'Y' : 'O'
     },
     /**
      * Indicate which lamp in the Five Hours Row must be on or off
      * @param time a momentJS date
      */
     fiveHoursRow (time) {
-      let row = ['O', 'O', 'O', 'O']
-      let hoursCpt = this.round5(time.hours()) / 5
-      for (let i = 0; i < hoursCpt; i++) {
-        row[i] = 'R'
-      }
-      return row
+      return this.formatHoursRow(this.round5(time.hours()) / 5)
     },
     /**
      * Indicate which lamp in the Single Hours Row must be on or off
      * @param time a momentJS date
      */
     singleHoursRow (time) {
+      return this.formatHoursRow(time.hours() % 5)
+    },
+    /**
+     * Return an array of string filled with N 'R'
+     * @param nbLamp the number of lamp which need to be on
+     */
+    formatHoursRow (nbLamp) {
       let row = ['O', 'O', 'O', 'O']
-      let hoursCpt = time.hours() % 5
-      for (let i = 0; i < hoursCpt; i++) {
+      for (let i = 0; i < nbLamp; i++) {
         row[i] = 'R'
       }
       return row
@@ -56,8 +56,8 @@ export default {
      */
     fiveMinutesRow (time) {
       let row = ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O']
-      let lampCpt = this.round5(time.minutes()) / 5
-      for (let i = 1; i <= lampCpt; i++) {
+      let nbLamp = this.round5(time.minutes()) / 5
+      for (let i = 1; i <= nbLamp; i++) {
         row[i - 1] = i % 3 === 0 ? 'R' : 'Y'
       }
       return row
@@ -68,10 +68,10 @@ export default {
      */
     singleMinutesRow (time) {
       let row = ['O', 'O', 'O', 'O']
-      let unites = time.minutes() % 10
-      if (unites !== 0 && unites !== 5) {
-        unites = unites < 5 ? unites : unites - 5
-        for (let i = 0; i < unites; i++) {
+      let nbLamp = time.minutes() % 10
+      if (nbLamp !== 0 && nbLamp !== 5) {
+        nbLamp = nbLamp < 5 ? nbLamp : nbLamp - 5
+        for (let i = 0; i < nbLamp; i++) {
           row[i] = 'Y'
         }
       }
