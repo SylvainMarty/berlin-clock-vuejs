@@ -1,6 +1,8 @@
 import moment from 'moment'
 import BerlinClock from '@/components/BerlinClock'
 
+var dateformat = 'HH:mm:ss'
+
 describe('BerlinClock.vue', () => {
   /*
    * Fonctionnal test cases
@@ -14,7 +16,7 @@ describe('BerlinClock.vue', () => {
     ]
 
     inputs.forEach((input) => {
-      let actual = BerlinClock.methods.secondsLamp(moment(input.time, BerlinClock.dateformat))
+      let actual = BerlinClock.methods.secondsLamp(moment(input.time, dateformat))
       expect(input.expected)
         .to.equal(actual)
     })
@@ -31,7 +33,7 @@ describe('BerlinClock.vue', () => {
     ]
 
     inputs.forEach((input) => {
-      let actual = BerlinClock.methods.singleMinutesRow(moment(input.time, BerlinClock.dateformat))
+      let actual = BerlinClock.methods.singleMinutesRow(moment(input.time, dateformat))
       expect(input.expected)
         .to.eql(actual)
     })
@@ -48,7 +50,7 @@ describe('BerlinClock.vue', () => {
     ]
 
     inputs.forEach((input) => {
-      let actual = BerlinClock.methods.fiveMinutesRow(moment(input.time, BerlinClock.dateformat))
+      let actual = BerlinClock.methods.fiveMinutesRow(moment(input.time, dateformat))
       expect(input.expected)
         .to.eql(actual)
     })
@@ -65,7 +67,7 @@ describe('BerlinClock.vue', () => {
     ]
 
     inputs.forEach((input) => {
-      let actual = BerlinClock.methods.singleHoursRow(moment(input.time, BerlinClock.dateformat))
+      let actual = BerlinClock.methods.singleHoursRow(moment(input.time, dateformat))
       expect(input.expected)
         .to.eql(actual)
     })
@@ -82,7 +84,7 @@ describe('BerlinClock.vue', () => {
     ]
 
     inputs.forEach((input) => {
-      let actual = BerlinClock.methods.fiveHoursRow(moment(input.time, BerlinClock.dateformat))
+      let actual = BerlinClock.methods.fiveHoursRow(moment(input.time, dateformat))
       expect(input.expected)
         .to.eql(actual)
     })

@@ -100,8 +100,6 @@ export default {
   beforeDestroy () {
     // Détruit le setInterval à la destruction du composant
     clearInterval(this.interval)
-  },
-  // Props globales du composant
-  dateformat: dateformat
+  }
 }
 </script>
