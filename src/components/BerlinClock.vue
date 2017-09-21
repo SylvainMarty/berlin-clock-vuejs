@@ -11,7 +11,6 @@ import moment from 'moment'
 var dateformat = 'HH:mm:ss'
 
 export default {
-  // Props de base d'un composant VueJS
   name: 'berlin-clock',
   data () {
     return {
@@ -28,6 +27,19 @@ export default {
       return seconds % 2 === 0 ? 'Y' : 'O'
     },
     /**
+     * Indicate which lamp in the Five Minutes Row must be on or off
+     * @param time a momentJS date
+     */
+    fiveMinutesRow (time) {
+      let row = ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O']
+      // We retrieve  and we divide it by 5
+      let lampCpt = this.round5(time.minutes()) / 5
+      for (let i = 1; i <= lampCpt; i++) {
+        row[i - 1] = i % 3 === 0 ? 'R' : 'Y'
+      }
+      return row
+    },
+    /**
      * Indicate which lamp in the Single Minutes Row must be on or off
      * @param time a momentJS date
      */
@@ -42,8 +54,12 @@ export default {
       }
       return row
     },
-    round5 (x) {
-      return Math.floor(x / 5) * 5
+    /**
+     * Return the nearest inferior multiple of 5
+     * @param number
+     */
+    round5 (number) {
+      return Math.floor(number / 5) * 5
     },
     updateTime () {
       this.time = moment()
