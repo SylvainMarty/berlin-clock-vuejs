@@ -20,12 +20,30 @@ export default {
   },
   methods: {
     /**
-     * Indicate if the seconds lamp must be on or off
+     * Indicate if the Seconds lamp must be on or off
      * @param time a momentJS date
      */
     secondsLamp (time) {
       let seconds = time.seconds()
       return seconds % 2 === 0 ? 'Y' : 'O'
+    },
+    /**
+     * Indicate which lamp in the Single Minutes Row must be on or off
+     * @param time a momentJS date
+     */
+    singleMinutesRow (time) {
+      let row = ['O', 'O', 'O', 'O']
+      let unites = time.minutes() % 10
+      if (unites !== 0 && unites !== 5) {
+        unites = unites < 5 ? unites : unites - 5
+        for (let i = 0; i < unites; i++) {
+          row[i] = 'Y'
+        }
+      }
+      return row
+    },
+    round5 (x) {
+      return Math.floor(x / 5) * 5
     },
     updateTime () {
       this.time = moment()
