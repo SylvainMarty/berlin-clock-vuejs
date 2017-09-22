@@ -1,7 +1,10 @@
 # Berlin clock
 
 > A Vue.js demo project
+
 > Started from the template [`vue-webpack-boilerplate`](https://github.com/vuejs-templates/webpack)
+
+Demo : https://sylvainmarty.github.io/berlin-clock-vuejs/
 
 ## Build Setup
 
