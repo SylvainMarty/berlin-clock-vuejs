@@ -122,12 +122,9 @@ export default {
      */
     singleMinutesRow (time) {
       let row = ['O', 'O', 'O', 'O']
-      let nbLamp = time.minutes() % 10
-      if (nbLamp !== 0 && nbLamp !== 5) {
-        nbLamp = nbLamp < 5 ? nbLamp : nbLamp - 5
-        for (let i = 0; i < nbLamp; i++) {
-          row[i] = 'Y'
-        }
+      let nbLamp = (time.minutes() % 10) % 5
+      for (let i = 1; i <= nbLamp; i++) {
+        row[i - 1] = 'Y'
       }
       return row
     },
