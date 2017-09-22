@@ -10,11 +10,13 @@
     "build": "node build/build.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",
-    "lint": "eslint --ext .js,.vue src test/unit/specs"
+    "lint": "eslint --ext .js,.vue src test/unit/specs",
+    "deploy": "node ./node_modules/vue-gh-pages/index.js"
   },
   "dependencies": {
     "moment": "^2.18.1",
-    "vue": "^2.4.2"
+    "vue": "^2.4.2",
+    "vue-gh-pages": "^1.5.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
