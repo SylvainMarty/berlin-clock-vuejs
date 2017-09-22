@@ -1,6 +1,7 @@
-# berlin-clock
+# Berlin clock
 
-> A Vue.js project
+> A Vue.js demo project
+> Started from the template [`vue-webpack-boilerplate`](https://github.com/vuejs-templates/webpack)
 
 ## Build Setup
 
@@ -23,5 +24,3 @@ npm run unit
 # run all tests
 npm test
 ```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
