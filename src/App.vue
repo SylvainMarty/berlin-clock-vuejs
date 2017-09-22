@@ -1,6 +1,10 @@
 <template>
   <div id="app">
     <berlin-clock></berlin-clock>
+    
+    <a href="https://github.com/SylvainMarty/berlin-clock-vuejs" target="_blank">
+      <img src="./assets/github-256.png" alt="logo Github" width="30px" height="30px">
+    </a>
   </div>
 </template>
 
@@ -22,6 +26,11 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 30px;
+}
+
+a {
+  display: inline-block;
+  margin-top: 10px;
 }
 </style>
