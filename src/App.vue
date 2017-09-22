@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
     <berlin-clock></berlin-clock>
   </div>
 </template>

@@ -2,8 +2,62 @@
   <div class="berlin-clock">
     <h1>Berlin clock</h1>
     <h2>{{ displayTime }}</h2>
+
+    <div class="lamps-wrapper">
+      <div class="row second">
+        <span :class="secondsLamp(time)"></span>
+      </div>
+      <div class="row">
+        <span v-for="(lamp,i) in fiveHoursRow(time)" :class="lamp"></span>
+      </div>
+      <div class="row">
+        <span v-for="(lamp,i) in singleHoursRow(time)" :class="lamp"></span>
+      </div>
+      <div class="row five-minutes">
+        <span v-for="(lamp,i) in fiveMinutesRow(time)" :class="lamp"></span>
+      </div>
+      <div class="row">
+        <span v-for="(lamp,i) in singleMinutesRow(time)" :class="lamp"></span>
+      </div>
+    </div>
   </div>
 </template>
+
+<style>
+.lamps-wrapper {
+  width: 500px;
+  margin: 0 auto;
+}
+.lamps-wrapper .row {
+  width: 100%;
+  text-align: center;
+}
+.lamps-wrapper .row span {
+  width: 7em;
+  height: 100px;
+  display: inline-block;
+  margin: 0 0.2em;
+}
+.lamps-wrapper .row.second span {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+}
+.lamps-wrapper .row.five-minutes span {
+  width: 2.3em;
+}
+
+.Y {
+  background-color: #ffeb3b;
+}
+.R {
+  background-color: #ff5252;
+}
+.O {
+  background-color: #607d8b;
+}
+</style>
+
 
 <script>
 import moment from 'moment'
